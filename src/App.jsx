@@ -30,6 +30,14 @@ function App() {
               </PrivateRoute>
             } 
           />
+          {/* Add a route for /dashboard */}
+          <Route path="/dashboard" element={
+            <PrivateRoute>
+              <Layout>
+                <UserDashboard />
+              </Layout>
+            </PrivateRoute>
+          } />
           <Route path="/user/booking" element={
             <PrivateRoute>
               <Layout>

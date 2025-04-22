@@ -5,7 +5,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { QRCodeSVG } from 'react-qr-code';
 import { Link } from 'react-router-dom';
 
-function UserDashboard() {  // Changed to regular function declaration
+function UserDashboard() {
   const [bookings, setBookings] = useState([]);
   const { currentUser } = useAuth();
 
@@ -27,15 +27,15 @@ function UserDashboard() {  // Changed to regular function declaration
   }, [currentUser]);
 
   return (
-    <>
-      <div className="flex justify-between items-center mb-6">
-        <div>
+    <div className="px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
+        <div className="text-center sm:text-left">
           <h1 className="text-2xl font-bold text-gray-800">My Bookings</h1>
           <p className="text-gray-600">Manage your upcoming visits</p>
         </div>
         <Link
           to="/user/booking"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center space-x-2"
+          className="mt-4 sm:mt-0 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center space-x-2"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
@@ -59,7 +59,7 @@ function UserDashboard() {  // Changed to regular function declaration
           </Link>
         </div>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {bookings.map((booking) => (
             <div key={booking.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="flex justify-between items-start mb-4">
@@ -86,7 +86,7 @@ function UserDashboard() {  // Changed to regular function declaration
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }
 

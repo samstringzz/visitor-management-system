@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/config';
 
-export default function TopNav() {
+export default function TopNav({ onMenuClick }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const { currentUser } = useAuth();
   const navigate = useNavigate();
@@ -24,11 +24,22 @@ export default function TopNav() {
 
   return (
     <nav className="bg-white shadow-lg">
-      <div className="max-w-full px-4"> {/* Remove mx-auto and max-w-7xl */}
+      <div className="px-4">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <h1 className="text-xl font-bold text-gray-800">Visitor Management</h1>
+            {/* Mobile menu button */}
+            <button
+              onClick={onMenuClick}
+              className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <h1 className="text-xl font-bold text-gray-800 ml-2 md:ml-0">Visitor Management</h1>
           </div>
+          
+          {/* Profile dropdown */}
           <div className="flex items-center">
             <div className="relative">
               <button
@@ -40,10 +51,10 @@ export default function TopNav() {
                   src={currentUser.photoURL || `https://ui-avatars.com/api/?name=${currentUser.email}`}
                   alt="Profile"
                 />
-                <span>{currentUser.email}</span>
+                <span className="hidden md:block">{currentUser.email}</span>
               </button>
               {isProfileOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
                   <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Profile Settings
                   </Link>
