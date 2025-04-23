@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { db } from '../../firebase/config';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { useAuth } from '../../contexts/AuthContext';
-import { QRCodeSVG } from 'react-qr-code';
+import QRCode from 'react-qr-code';
 import { Link } from 'react-router-dom';
 
 function UserDashboard() {
@@ -77,7 +77,7 @@ function UserDashboard() {
                 <p className="text-gray-600">Time: {booking.eventTime}</p>
                 {booking.status === 'approved' && (
                   <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                    <QRCodeSVG value={booking.id} size={128} />
+                    <QRCode value={booking.id} size={128} /> {/* Changed QRCodeSVG to QRCode */}
                     <p className="text-sm text-gray-500 mt-2 text-center">Show this QR code at entry</p>
                   </div>
                 )}
