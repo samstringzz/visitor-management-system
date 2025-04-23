@@ -36,7 +36,7 @@ export default function TopNav({ onMenuClick }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <h1 className="text-xl font-bold text-gray-800 ml-2 md:ml-0">Visitor Management</h1>
+            <h1 className="text-md md:text-xl font-bold text-blue-500 ml-2 md:ml-0">Visitor's Management System</h1>
           </div>
           
           {/* Profile dropdown */}

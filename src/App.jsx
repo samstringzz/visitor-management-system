@@ -9,6 +9,7 @@ import UserDashboard from './pages/user/Dashboard';
 import BookingForm from './pages/user/BookingForm';
 import ScannerPage from './pages/admin/ScannerPage';
 import VisitHistory from './pages/user/VisitHistory'; 
+import ProfileSettings from './pages/user/ProfileSettings';
 
 function App() {
   return (
@@ -63,6 +64,13 @@ function App() {
             <PrivateRoute>
               <Layout>
                 <VisitHistory />
+              </Layout>
+            </PrivateRoute>
+          } />
+          <Route path="/profile" element={
+            <PrivateRoute>
+              <Layout>
+                <ProfileSettings />
               </Layout>
             </PrivateRoute>
           } />

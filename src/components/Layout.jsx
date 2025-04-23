@@ -20,14 +20,14 @@ export default function Layout({ children }) {
         />
         
         {/* Sidebar */}
-        <div className={`fixed left-0 h-[calc(100vh-4rem)] z-10 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        <div className={`fixed top-16 left-0 w-64 h-[calc(100vh-4rem)] bg-white shadow-lg z-20 transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:static lg:h-full`}>
+        } lg:translate-x-0`}>
           <SideNav />
         </div>
 
         {/* Main content */}
-        <div className="flex-1 w-full lg:ml-64 p-4 md:p-6">
+        <div className="w-full lg:pl-64 p-4">
           {children}
         </div>
       </div>

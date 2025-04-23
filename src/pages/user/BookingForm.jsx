@@ -20,9 +20,14 @@ export default function BookingForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Get the current user's email
+      const userEmail = currentUser.email;
+      
       await addDoc(collection(db, 'bookings'), {
         ...formData,
         userId: currentUser.uid,
+        visitorEmail: userEmail, // Add this line to ensure email is set
+        visitorName: currentUser.displayName || formData.visitorName, // Add fallback for name
         status: 'pending',
         createdAt: new Date().toISOString()
       });
@@ -41,7 +46,7 @@ export default function BookingForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="py-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="text-center text-3xl font-extrabold text-gray-900">
           Create New Booking

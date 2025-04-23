@@ -1,28 +1,46 @@
-import { Resend } from 'resend';
-
-const resend = new Resend('re_BnMV5uo4_2C6nUnDvbM6odhh6CBsrLB4C');
+import emailjs from '@emailjs/browser';
 
 export const sendApprovalEmail = async (booking) => {
   try {
-    await resend.emails.send({
-      from: 'your@domain.com',
-      to: booking.visitorEmail,
-      subject: 'Booking Approved - Visitor Management System',
-      html: `
-        <h1>Your Booking has been Approved!</h1>
-        <p>Dear ${booking.visitorName},</p>
-        <p>Your booking for ${booking.eventName} on ${booking.eventDate} has been approved.</p>
-        <p>Please present the QR code below at the venue:</p>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=${booking.id}&size=200x200" alt="QR Code" />
-        <p>Event Details:</p>
-        <ul>
-          <li>Event: ${booking.eventName}</li>
-          <li>Date: ${booking.eventDate}</li>
-          <li>Purpose: ${booking.purpose}</li>
-        </ul>
-      `
-    });
-    return true;
+    // Enhanced validation
+    if (!booking) {
+      console.error('Booking object is missing');
+      return false;
+    }
+
+    if (!booking.visitorEmail) {
+      console.error('Booking email validation failed:', {
+        hasBooking: !!booking,
+        bookingData: booking
+      });
+      return false;
+    }
+
+    const templateParams = {
+      from_name: "Visitor Management System",
+      to_email: booking.visitorEmail.trim(),
+      reply_to: booking.visitorEmail.trim(),
+      to_name: booking.visitorName || 'Visitor',
+      event_name: booking.eventName || 'Event',
+      event_date: booking.eventDate || 'Not specified',
+      purpose: booking.purpose || 'Not specified',
+      qr_code: booking.id, 
+      email: booking.visitorEmail.trim()
+    };
+
+    console.log('Sending email with params:', templateParams);
+
+    const response = await emailjs.send(
+      'service_7nzbbvg', 
+      'template_1tn9twm',
+      templateParams,
+      'B_c1y_fXLLoVChR5E' 
+    );
+
+    if (response.status === 200) {
+      return true;
+    }
+    throw new Error('Failed to send email');
   } catch (error) {
     console.error('Error sending email:', error);
     return false;

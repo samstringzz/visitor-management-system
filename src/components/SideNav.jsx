@@ -1,12 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 
 export default function SideNav() {
-  const location = useLocation(); // Ensure useLocation is used
+  const location = useLocation();
 
   return (
-    <div className="w-64 min-h-screen bg-white shadow-lg"> {/* Changed h-full to min-h-screen */}
+    <div className="w-64 fixed h-[calc(100vh-4rem)] bg-white shadow-lg overflow-y-auto">
       <nav className="mt-5 px-4">
-        {/* Make nav items more touch-friendly on mobile */}
         <div className="space-y-2">
           <Link
             to="/dashboard"
