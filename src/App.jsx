@@ -10,16 +10,17 @@ import BookingForm from './pages/user/BookingForm';
 import ScannerPage from './pages/admin/ScannerPage';
 import VisitHistory from './pages/user/VisitHistory'; 
 import ProfileSettings from './pages/user/ProfileSettings';
+import LandingPage from './pages/LandingPage';
 
 function App() {
   return (
     <Router>
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/" element={<Navigate to="/landing" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          
+          <Route path="/landing" element={<LandingPage />} />
           {/* Admin Routes */}
           <Route 
             path="/admin/dashboard" 

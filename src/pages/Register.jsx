@@ -68,9 +68,26 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-2xl">
-        <div>
+    <div 
+      className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative"
+      style={{
+        backgroundImage: 'url("/backgrounds.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      <div 
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        style={{ zIndex: 0 }}
+      />
+      <div className="max-w-md w-full space-y-8 bg-white/90 p-6 sm:p-10 rounded-xl shadow-2xl backdrop-blur-sm relative z-10">
+        <div className="flex flex-col items-center">
+          <img 
+            src="/travel.jpg" 
+            alt="Visitor Management Logo" 
+            className="h-24 w-24 mb-4 object-cover rounded-full"
+          />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Create your account
           </h2>
