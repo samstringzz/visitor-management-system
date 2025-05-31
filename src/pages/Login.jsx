@@ -59,8 +59,8 @@ export default function Login() {
             alt="Visitor Management Logo" 
             className="h-24 w-24 mb-4 object-cover rounded-full"
           />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Welcome Back
+          <h2 className="mt-6 text-center text-2xl font-extrabold text-gray-900">
+            Visitors Management Signin
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Please sign in to your account
