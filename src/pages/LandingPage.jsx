@@ -36,19 +36,41 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <header 
-        className="relative bg-cover bg-center text-white py-24 lg:py-40 flex items-center justify-center"
-        style={{
-          backgroundImage: 'url("/backgrounds.jpg")'
-        }}
-      >
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/70" />
+      <header className="relative py-16 lg:py-0 bg-white">
+        {/* Container for the split layout */}
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center">
+          {/* Left side with background image */}
+          <div 
+            className="w-full lg:w-1/2 h-64 lg:h-auto bg-cover bg-center relative rounded-lg lg:rounded-none shadow-lg lg:shadow-none mb-8 lg:mb-0"
+            style={{
+              backgroundImage: 'url("/background.png")',
+              minHeight: '400px' // Ensure a minimum height on large screens
+            }}
+          >
+          </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-xl">Modern Visitor Management</h1>
-          <p className="text-lg lg:text-xl mb-10 opacity-90 drop-shadow">Effortlessly manage guest arrivals, enhance security, and gain valuable insights.</p>
-          {/* Keeping CTA buttons in a separate section below */}
+          {/* Right side with content */}
+          <div className="w-full lg:w-1/2 p-8 lg:p-12 text-center lg:text-left">
+            <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Modern Visitor Management</h1>
+            <p className="text-lg lg:text-xl text-gray-700 mb-8">
+              Effortlessly manage guest arrivals, enhance security, and gain valuable insights.
+            </p>
+            {/* Optional: Add main CTA buttons here if desired in this layout */}
+             <div className="flex justify-center lg:justify-start space-x-4">
+               <Link 
+                to="/register" 
+                className="px-8 py-3 bg-indigo-600 text-white text-lg font-medium rounded-md hover:bg-indigo-700 transition-colors duration-200 shadow-md"
+              >
+                Get Started Free
+              </Link>
+               <Link 
+                to="/login" 
+                className="px-8 py-3 border border-indigo-600 text-indigo-600 text-lg font-medium rounded-md hover:bg-indigo-50 hover:text-indigo-700 transition-colors duration-200 shadow-md"
+              >
+                Login
+              </Link>
+            </div>
+          </div>
         </div>
       </header>
 
